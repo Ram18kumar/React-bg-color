@@ -1,24 +1,20 @@
-// import logo from './logo.svg';
-// import './App.css';
-// import React,{ useState,useEffect } from 'react';
-import { useEffect } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 function App() {
-  const[color,setColor]=useState("yellow")
-  const click = color => {
-    setColor(color)
-  }
-  useEffect(()=>{
+  const [backgroundColor, setBackgroundColor] = useState("white");
 
-  },[color])
+  const changeBackgroundColor = () => {
+    // Generate a random color
+    const randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    setBackgroundColor(randomColor);
+  };
+
   return (
-   <div className="App">
-    <button onClick={
-      ()=>click("red")
-    }>Click here to change color</button>
-   </div>
-  )
+    <div style={{ backgroundColor: backgroundColor, minHeight: "100vh" }}>
+      <h1>Background Color Changer</h1>
+      <button onClick={changeBackgroundColor}>Change Background Color</button>
+    </div>
+  );
 }
 
 export default App;
