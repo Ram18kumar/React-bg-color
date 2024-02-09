@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 function App() {
-  const [backgroundColor, setBackgroundColor] = useState("white");
+  const [backgroundColor, setBackgroundColor] = useState('white');
+  const [isDefaultColor, setIsDefaultColor] = useState(true);
 
-  const changeBackgroundColor = () => {
-    // Generate a random color
-    const randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-    setBackgroundColor(randomColor);
+  const toggleBackgroundColor = () => {
+    const newColor = isDefaultColor ? 'blue' : 'white';
+    setBackgroundColor(newColor);
+    setIsDefaultColor(!isDefaultColor); // Toggle the state
   };
 
   return (
-    <div style={{ backgroundColor: backgroundColor, minHeight: "100vh" }}>
+    <div style={{ backgroundColor: backgroundColor, minHeight: '100vh' }}>
       <h1>Background Color Changer</h1>
-      <button onClick={changeBackgroundColor}>Change Background Color</button>
+      <button onClick={toggleBackgroundColor}>
+        {isDefaultColor ? 'Change color' : 'Back to default'}
+      </button>
     </div>
   );
 }
